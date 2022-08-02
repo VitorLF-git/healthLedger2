@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'healthLedger2';
+  sidebar = 'd-flex flex-column flex-shrink-0 p-3 bg-light sidebar'
 }

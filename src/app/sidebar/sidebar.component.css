@@ -1,5 +1,6 @@
-.sidebar{
+.sidebar {
     width: 280px;
+    height: 100vh;
 }
 
 main {
@@ -8,5 +9,8 @@ main {
     max-height: 100vh;
     overflow-x: auto;
     overflow-y: hidden;
-  }
-  
+}
+
+.mat-icon {
+    vertical-align: middle;
+}
