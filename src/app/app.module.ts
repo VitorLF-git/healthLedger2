@@ -11,14 +11,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import {MatTableModule} from '@angular/material/table'; 
+import {MatTableModule} from '@angular/material/table';
+import { LabsComponent } from './components/labs/labs.component';
+import { MedicamentosComponent } from './components/medicamentos/medicamentos.component';
+import { CadastrarComponent } from './components/cadastrar/cadastrar.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    LabsComponent,
+    MedicamentosComponent,
+    CadastrarComponent
   ],
   imports: [
     BrowserModule,

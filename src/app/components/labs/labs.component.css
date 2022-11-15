@@ -1,0 +1,22 @@
+.demo-table {
+    width: 300%;
+  }
+  
+  .mat-row .mat-cell {
+    cursor: pointer;
+  }
+  
+  .mat-row:hover .mat-cell {
+    border-bottom: 2px solid ;
+    border-top: 2px solid ;
+    border-color: rgb(49, 49, 49);
+  }
+  
+  .demo-row-is-clicked {
+    border: 2px solid;
+    border-color: #3f51b560;
+    font-weight: bold;
+  }
+.mat-form-field{
+  width: 100%;
+}
