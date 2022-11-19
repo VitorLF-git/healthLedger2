@@ -24,26 +24,22 @@ export class LabsComponent implements OnInit {
   dataSource = []
   rotating = false;
   cadastrar = false;
+  firstLoad = false;
 
   ngOnInit(): void {
-    this.dataSource = this.labsService.getLocalLabs();
+    this.dataSource = this.labsService.getLocalLabs()
+    if (this.dataSource.length == 0) {
+      this.firstLoad = true;
+      this.refresh();
+    };
   }
 
 
-  refresh() {
-    this.rotating = true;
-    this.labsService.getLabs().subscribe((data: any) => {
-      localStorage.setItem('labs', JSON.stringify(data));
-      this.dataSource = data;
-      this.rotating = false;
-    });
-  }
-  
   openDialog(element: any, action: string) {
     let dialogComponent: any;
-    if(action === 'editar'){
+    if (action === 'editar') {
       dialogComponent = EditarModalComponent;
-    }else if(action === 'apagar'){
+    } else if (action === 'apagar') {
       dialogComponent = ApagarModalComponent;
     }
 
@@ -59,11 +55,22 @@ export class LabsComponent implements OnInit {
     resultDialog.afterClosed().pipe(
       take(1),
     ).subscribe((result) => {
-      if(result){
+      if (result) {
         this.refresh();
       }
     });
   }
+
+
+  refresh() {
+    this.rotating = true;
+    this.labsService.getLabs().subscribe((data: any) => {
+      localStorage.setItem('labs', JSON.stringify(data));
+      this.dataSource = data;
+      this.rotating = false;
+      this.firstLoad = false;
+    });
+  }
+
+
 }
-
-

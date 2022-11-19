@@ -46,3 +46,9 @@ body {
     color: white;
     cursor: pointer;
 }
+
+.global-spinner{
+    position: absolute;
+    left: 40%;
+    
+}
