@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LabsService } from 'src/app/services/labs.service';
 import { MedicamentosService } from 'src/app/services/medicamentos.service';
@@ -12,8 +12,9 @@ import { Lab } from '../labs/labs.component';
 export class CadastrarComponent implements OnInit {
   
   @Input() public id: number = 0;
-  
   @Input() public tipo: string = 'Escolha um tipo de cadastro';
+
+  @Output() cadastroRealizado = new EventEmitter<string>();
   
   laboratorios: any = [];
   
@@ -22,7 +23,7 @@ export class CadastrarComponent implements OnInit {
     nome: new FormControl(''),
     endereco: new FormControl(''),
     quantidade: new FormControl(''),
-    laboratorio: new FormControl(''),
+    hospital: new FormControl(''),
   });
 
   rotating = false;
@@ -47,6 +48,7 @@ export class CadastrarComponent implements OnInit {
     else if (this.id == 2) {
       this.medicamentoService.createMedicamento(this.profileForm.value).subscribe();
     }
+    this.cadastroRealizado.emit('Cadastro realizado com sucesso!');
   }
 
   refresh() {

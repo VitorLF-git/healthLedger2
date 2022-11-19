@@ -27,4 +27,8 @@ export class MedicamentosService {
   deleteMedicamento(id: string) {
     return this.commonService.delete('https://fiapexercicio3.herokuapp.com/medicamentos/' + id);
   }
+
+  getLocalMedicamentos() {
+    return JSON.parse(localStorage.getItem('medicamentos') || '[]');
+  }
 }

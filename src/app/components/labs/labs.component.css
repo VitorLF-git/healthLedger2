@@ -34,8 +34,8 @@
   cursor: pointer;
 }
 
-.refresh-icon {
-  background-color: var(--primary);
+.header-icon-open {
+  background-color: lightgreen;
   border-radius: 50px;
   color: white;
   cursor: pointer;

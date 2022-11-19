@@ -7,8 +7,8 @@
         <form [formGroup]="profileForm">
             <div class="center-content">
                 <mat-button-toggle-group formControlName="tipo" (change)="changeTipo($event)">
-                    <mat-button-toggle value="Laboratórios" id="1">Laboratórios</mat-button-toggle>
-                    <mat-button-toggle value="Medicamentos" id="2">Medicamentos</mat-button-toggle>
+                    <mat-button-toggle value="Laboratórios" id="1" [ngClass]="{'selected': id === 1}">Laboratórios</mat-button-toggle>
+                    <mat-button-toggle value="Medicamentos" id="2" [ngClass]="{'selected': id === 2}">Medicamentos</mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
             <div class="center-content" *ngIf="id !== 0" >
@@ -26,13 +26,13 @@
             <div class="center-content" *ngIf="id === 2">
                 <mat-form-field appearance="fill" class="limit-width">
                     <mat-label>Quantidade</mat-label>
-                    <input matInput formControlName="quantidade">
+                    <input type="number" matInput formControlName="quantidade">
                 </mat-form-field>
             </div>
             <div class="center-content" *ngIf="id === 2">
                 <mat-form-field appearance="fill" class="limit-width-2">
                     <mat-label>Laboratório</mat-label>
-                    <mat-select>
+                    <mat-select  formControlName="hospital">
                       <mat-option *ngFor="let lab of laboratorios" [value]="lab.nome">{{lab.nome}}</mat-option>
                     </mat-select>
                 </mat-form-field>

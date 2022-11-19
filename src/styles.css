@@ -22,6 +22,7 @@ body {
         -o-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     to {
         -webkit-transform: rotate(360deg);
         -moz-transform: rotate(360deg);
@@ -30,10 +31,18 @@ body {
         transform: rotate(360deg);
     }
 }
+
 .rotating {
     -webkit-animation: rotating 1s linear infinite;
     -moz-animation: rotating 1s linear infinite;
     -ms-animation: rotating 1s linear infinite;
     -o-animation: rotating 1s linear infinite;
     animation: rotating 1s linear infinite;
-  }
+}
+
+.refresh-icon {
+    background-color: var(--primary);
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+}

@@ -18,13 +18,21 @@ export class MedicamentosComponent implements OnInit {
 
   displayedColumns: string[] = ['nome', 'quantidade', 'hospital', 'actions'];
   dataSource = [];
+  rotating = false;
   cadastrar = false;
   
   constructor(private medicamentosService: MedicamentosService) { }
 
   ngOnInit(): void {
+    this.dataSource = this.medicamentosService.getLocalMedicamentos();
+  }
+
+  refresh() {
+    this.rotating = true;
     this.medicamentosService.getMedicamentos().subscribe((data: any) => {
+      localStorage.setItem('medicamentos', JSON.stringify(data));
       this.dataSource = data;
+      this.rotating = false;
     });
   }
 
