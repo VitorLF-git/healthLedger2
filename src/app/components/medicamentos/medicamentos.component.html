@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <h3>Relação de medicamentos movimentados</h3>
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+            <table *ngIf="dataSource" mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
 
                 <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->

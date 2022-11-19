@@ -10,6 +10,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LabsComponent } from './components/labs/labs.component';
 import { MedicamentosComponent } from './components/medicamentos/medicamentos.component';
 import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -31,6 +32,7 @@ import {MatCardModule} from '@angular/material/card';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
