@@ -29,6 +29,8 @@ export class CadastrarComponent implements OnInit {
   });
 
   rotating = false;
+  loading = false;
+  finished = false;
 
   constructor(private labService: LabsService, private medicamentoService: MedicamentosService) { }
 
@@ -42,6 +44,8 @@ export class CadastrarComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
+    this.finished = false;
     if (this.id == 1) {
       console.log(this.profileForm.value);
       let lab: Lab = { nome: this.profileForm.value.nome!, endereco: this.profileForm.value.endereco! };
@@ -49,6 +53,8 @@ export class CadastrarComponent implements OnInit {
         take(1),
       ).subscribe(() => {
         this.cadastroRealizado.emit('Cadastro realizado com sucesso!');
+        this.loading = false;
+        this.finished = true;
       });
     }
     else if (this.id == 2) {
@@ -57,6 +63,8 @@ export class CadastrarComponent implements OnInit {
         take(1),
       ).subscribe(() => {
         this.cadastroRealizado.emit('Cadastro realizado com sucesso!');
+        this.loading = false;
+        this.finished = true;
       });
     }
   }

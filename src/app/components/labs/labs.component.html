@@ -36,7 +36,7 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-            <app-cadastrar [id]="1" [tipo]="'Laboratórios'" *ngIf="cadastrar" (cadastroRealizado)="refresh()"></app-cadastrar>
+            <app-cadastrar [id]="1" [tipo]="'Laboratório'" *ngIf="cadastrar" (cadastroRealizado)="refresh()"></app-cadastrar>
         </div>
         <div class="col-md-1">
 

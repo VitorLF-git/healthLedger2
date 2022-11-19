@@ -7,8 +7,8 @@
         <form [formGroup]="profileForm">
             <div class="center-content">
                 <mat-button-toggle-group formControlName="tipo" (change)="changeTipo($event)">
-                    <mat-button-toggle value="Laboratórios" id="1" [ngClass]="{'selected': id === 1}">Laboratórios</mat-button-toggle>
-                    <mat-button-toggle value="Medicamentos" id="2" [ngClass]="{'selected': id === 2}">Medicamentos</mat-button-toggle>
+                    <mat-button-toggle value="Laboratório" id="1" [ngClass]="{'selected': id === 1}">Laboratórios</mat-button-toggle>
+                    <mat-button-toggle value="Medicamento" id="2" [ngClass]="{'selected': id === 2}">Medicamentos</mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
             <div class="center-content" *ngIf="id !== 0" >
@@ -42,9 +42,17 @@
             </div>
         </form>
     </mat-card-content>
-    <mat-card-actions class="center-content">
-        <div class="alternate-theme" *ngIf="id !== 0">
+    <mat-card-actions>
+        <div class="center-content"  *ngIf="loading">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div class="alternate-theme center-content" *ngIf="id !== 0 && !loading">
             <button class="" mat-flat-button color="primary" (click)="onSubmit()">Cadastrar</button>
+        </div>
+        <div *ngIf="finished" class="center-content">
+            <h1 class="alert alert-success">
+                {{tipo}} cadastrado com sucesso!
+            </h1>
         </div>
     </mat-card-actions>
 </mat-card>
