@@ -20,7 +20,7 @@ export class MedicamentosService {
     return this.commonService.post('https://fiapexercicio3.herokuapp.com/medicamentos/', medicamento);
   }
 
-  updateMedicamento(medicamento: { id: string; }) {
+  updateMedicamento(medicamento: any) {
     return this.commonService.put('https://fiapexercicio3.herokuapp.com/medicamentos/' + medicamento.id, medicamento);
   }
 

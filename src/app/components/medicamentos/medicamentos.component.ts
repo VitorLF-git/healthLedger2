@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { take } from 'rxjs';
+import { EditarModalComponent } from 'src/app/modal/editar-modal/editar-modal.component';
 import { MedicamentosService } from 'src/app/services/medicamentos.service';
 
 export interface Medicamento {
   id?: number;
   nome: string;
   quantidade: string;
-  laboratorio: string;
+  hospital: string;
 }
 
 
@@ -20,8 +23,8 @@ export class MedicamentosComponent implements OnInit {
   dataSource = [];
   rotating = false;
   cadastrar = false;
-  
-  constructor(private medicamentosService: MedicamentosService) { }
+
+  constructor(private medicamentosService: MedicamentosService, public dialog: MatDialog) { };
 
   ngOnInit(): void {
     this.dataSource = this.medicamentosService.getLocalMedicamentos();
@@ -35,5 +38,25 @@ export class MedicamentosComponent implements OnInit {
       this.rotating = false;
     });
   }
-
+  openDialog(element: any) {
+    console.log(element);
+    
+    let resultDialog = this.dialog.open(EditarModalComponent, {
+      data: {
+        id: 2,
+        tipo: 'Medicamento',
+        idDatabase: element.id,
+        nome: element.nome,
+        quantidade: element.quantidade,
+        hospital: element.hospital
+      },
+    });
+    resultDialog.afterClosed().pipe(
+      take(1),
+    ).subscribe((result) => {
+      if(result){
+        this.refresh();
+      }
+    });
+  }
 }

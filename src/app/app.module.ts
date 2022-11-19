@@ -10,6 +10,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LabsComponent } from './components/labs/labs.component';
 import { MedicamentosComponent } from './components/medicamentos/medicamentos.component';
 import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
+import { EditarModalComponent } from './modal/editar-modal/editar-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -24,6 +25,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     NavbarComponent,
     LabsComponent,
     MedicamentosComponent,
-    CadastrarComponent
+    CadastrarComponent,
+    EditarModalComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatInputModule,
     MatButtonToggleModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

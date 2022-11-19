@@ -43,10 +43,10 @@ export class CadastrarComponent implements OnInit {
     if (this.id == 1) {
       console.log(this.profileForm.value);
       let lab: Lab = { nome: this.profileForm.value.nome!, endereco: this.profileForm.value.endereco! };
-      this.labService.createLab(lab).subscribe();
+      this.labService.createLab(lab);
     }
     else if (this.id == 2) {
-      this.medicamentoService.createMedicamento(this.profileForm.value).subscribe();
+      this.medicamentoService.createMedicamento(this.profileForm.value);
     }
     this.cadastroRealizado.emit('Cadastro realizado com sucesso!');
   }

@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Editar {{tipo}}</h1>
+<div mat-dialog-content>
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <h1 *ngIf="finalizado" class="alert alert-primary">
+        Alteração Feita com sucesso!
+    </h1>
+    <form mat-dialog-content [formGroup]="profileForm" *ngIf="!loading && !finalizado">
+
+        <div class="center-content">
+            <mat-form-field appearance="fill" class="limit-width">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome">
+            </mat-form-field>
+        </div>
+        <div class="center-content" *ngIf="id === 1">
+            <mat-form-field appearance="fill" class="limit-width">
+                <mat-label>Endereço</mat-label>
+                <input matInput formControlName="endereco">
+            </mat-form-field>
+        </div>
+        <div class="center-content" *ngIf="id === 2">
+            <mat-form-field appearance="fill" class="limit-width">
+                <mat-label>Quantidade</mat-label>
+                <input type="number" matInput formControlName="quantidade">
+            </mat-form-field>
+        </div>
+        <div class="center-content" *ngIf="id === 2">
+            <mat-form-field appearance="fill" class="limit-width-2">
+                <mat-label>Laboratório</mat-label>
+                <mat-select formControlName="hospital">
+                    <mat-option *ngFor="let lab of laboratorios" [value]="lab.nome">{{lab.nome}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-mini-fab class="refresh" color="primary"
+                [ngClass]="{'refresh-icon': true, 'rotating': rotating}" (click)="refresh()">
+                <mat-icon>refresh</mat-icon>
+            </button>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close *ngIf="!finalizado">Cancelar</button>
+    <div class="alternate-theme" *ngIf="!finalizado">
+        <button class="" mat-flat-button color="primary" (click)="onSubmit()">Atualizar</button>
+    </div>
+    <button class="" mat-flat-button color="primary" [mat-dialog-close]="true" *ngIf="finalizado">Fechar</button>
+</div>

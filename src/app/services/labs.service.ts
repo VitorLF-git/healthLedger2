@@ -20,7 +20,7 @@ export class LabsService {
     return this.commonService.post('https://fiapexercicio3.herokuapp.com/laboratorios/', lab);
   }
 
-  updateLab(lab: { id: string; }) {
+  updateLab(lab: any) {
     return this.commonService.put('https://fiapexercicio3.herokuapp.com/laboratorios/' + lab.id, lab);
   }
 
