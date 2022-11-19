@@ -28,8 +28,8 @@
                         <mat-icon [ngClass]="{'refresh-icon': true, 'rotating': rotating}" (click)="refresh()">refresh</mat-icon>
                     </th>
                     <td mat-cell *matCellDef="let element">
-                        <mat-icon class="edit-icon">edit</mat-icon>
-                        <mat-icon class="delete-icon">delete</mat-icon>
+                        <mat-icon class="edit-icon" (click)="openDialog(element, 'editar')">edit</mat-icon>
+                        <mat-icon class="delete-icon" (click)="openDialog(element, 'apagar')">delete</mat-icon>
                     </td>
                 </ng-container>
 

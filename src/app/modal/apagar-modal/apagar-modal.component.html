@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Deletar {{tipo}}</h1>
+<div mat-dialog-content>
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <h1 *ngIf="finalizado" class="alert alert-primary">
+        {{tipo}} deletado com sucesso!
+    </h1>
+    <h1 *ngIf="!finalizado && !loading" class="alert alert-danger">
+        Deseja deletar o {{tipo}} {{nome}}?
+    </h1>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close *ngIf="!finalizado">Cancelar</button>
+    <div class="alternate-theme" *ngIf="!finalizado">
+        <button class="" mat-flat-button color="primary" (click)="onSubmit()">Apagar</button>
+    </div>
+    <button class="" mat-flat-button color="primary" [mat-dialog-close]="true" *ngIf="finalizado">Fechar</button>
+</div>

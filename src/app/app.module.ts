@@ -26,6 +26,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ApagarModalComponent } from './modal/apagar-modal/apagar-modal.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     LabsComponent,
     MedicamentosComponent,
     CadastrarComponent,
-    EditarModalComponent
+    EditarModalComponent,
+    ApagarModalComponent
   ],
   imports: [
     BrowserModule,

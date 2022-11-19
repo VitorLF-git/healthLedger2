@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { take } from 'rxjs';
+import { ApagarModalComponent } from 'src/app/modal/apagar-modal/apagar-modal.component';
 import { EditarModalComponent } from 'src/app/modal/editar-modal/editar-modal.component';
 import { MedicamentosService } from 'src/app/services/medicamentos.service';
 
@@ -38,10 +39,15 @@ export class MedicamentosComponent implements OnInit {
       this.rotating = false;
     });
   }
-  openDialog(element: any) {
-    console.log(element);
+  openDialog(element: any, action: string) {
+    let dialogComponent: any;
+    if(action === 'editar'){
+      dialogComponent = EditarModalComponent;
+    }else if(action === 'apagar'){
+      dialogComponent = ApagarModalComponent;
+    }
     
-    let resultDialog = this.dialog.open(EditarModalComponent, {
+    let resultDialog = this.dialog.open(dialogComponent, {
       data: {
         id: 2,
         tipo: 'Medicamento',
