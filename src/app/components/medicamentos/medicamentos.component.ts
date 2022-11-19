@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MedicamentosService } from 'src/app/services/medicamentos.service';
 
 export interface Medicamento {
-  position?: number;
+  id?: number;
   nome: string;
   quantidade: string;
   laboratorio: string;
@@ -16,13 +16,14 @@ export interface Medicamento {
 })
 export class MedicamentosComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'nome', 'quantidade', 'hospital', 'actions'];
+  displayedColumns: string[] = ['nome', 'quantidade', 'hospital', 'actions'];
   dataSource = [];
+  cadastrar = false;
+  
   constructor(private medicamentosService: MedicamentosService) { }
 
   ngOnInit(): void {
     this.medicamentosService.getMedicamentos().subscribe((data: any) => {
-      console.log(data);
       this.dataSource = data;
     });
   }

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { LabsService } from 'src/app/services/labs.service';
+import { MedicamentosService } from 'src/app/services/medicamentos.service';
+import { Lab } from '../labs/labs.component';
 
 @Component({
   selector: 'app-cadastrar',
@@ -6,10 +10,51 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cadastrar.component.css']
 })
 export class CadastrarComponent implements OnInit {
+  
+  @Input() public id: number = 0;
+  
+  @Input() public tipo: string = 'Escolha um tipo de cadastro';
+  
+  laboratorios: any = [];
+  
+  profileForm = new FormGroup({
+    tipo: new FormControl(''),
+    nome: new FormControl(''),
+    endereco: new FormControl(''),
+    quantidade: new FormControl(''),
+    laboratorio: new FormControl(''),
+  });
 
-  constructor() { }
-
+  rotating = false;
+  
+  constructor(private labService: LabsService, private medicamentoService: MedicamentosService) { }
+  
   ngOnInit(): void {
+    this.laboratorios = this.labService.getLocalLabs();
   }
 
+  changeTipo(event: any) {
+    this.tipo = event.value;
+    this.id = +event.source.id;
+  }
+
+  onSubmit() {
+    if (this.id == 1) {
+      console.log(this.profileForm.value);
+      let lab: Lab = { nome: this.profileForm.value.nome!, endereco: this.profileForm.value.endereco! };
+      this.labService.createLab(lab).subscribe();
+    }
+    else if (this.id == 2) {
+      this.medicamentoService.createMedicamento(this.profileForm.value).subscribe();
+    }
+  }
+
+  refresh() {
+    this.rotating = true;
+    this.labService.getLabs().subscribe((data: any) => {
+      localStorage.setItem('labs', JSON.stringify(data));
+      this.laboratorios = data;
+      this.rotating = false;
+    });
+  }
 }

@@ -3,7 +3,7 @@ import { LabsService } from 'src/app/services/labs.service';
 
 export interface Lab {
   nome: string;
-  position: number;
+  id?: number;
   endereco: string;
 }
 
@@ -16,17 +16,24 @@ export class LabsComponent implements OnInit {
 
   constructor(private labsService: LabsService) { }
 
-  displayedColumns: string[] = ['position', 'nome', 'endereco', 'actions'];
+  displayedColumns: string[] = ['nome', 'endereco', 'actions'];
   dataSource = []
-  
+  rotating = false;
+  cadastrar = false;
+
   ngOnInit(): void {
-    this.labsService.getLabs().subscribe((data: any) => {
-      console.log(data);
-      
-      this.dataSource = data;
-    });
+    this.dataSource = this.labsService.getLocalLabs();
   }
 
+
+  refresh() {
+    this.rotating = true;
+    this.labsService.getLabs().subscribe((data: any) => {
+      localStorage.setItem('labs', JSON.stringify(data));
+      this.dataSource = data;
+      this.rotating = false;
+    });
+  }
 }
 
 

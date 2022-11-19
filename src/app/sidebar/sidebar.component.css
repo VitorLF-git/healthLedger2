@@ -1,14 +1,7 @@
 .sidebar {
     width: 280px;
-    height: 100vh;
-}
-
-main {
-    height: 100vh;
+    height: 100%;    
     height: -webkit-fill-available;
-    max-height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
 }
 
 .mat-icon {

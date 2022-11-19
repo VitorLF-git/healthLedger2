@@ -34,6 +34,13 @@
   cursor: pointer;
 }
 
+.refresh-icon {
+  background-color: var(--primary);
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+}
+
 .delete-icon:hover{
   background-color: red;
   border-radius: 50px;
@@ -41,7 +48,7 @@
 }
 /* primary = #0275d8  */
 .edit-icon:hover{
-  background-color: #0275d8;
+  background-color: var(--primary);
   border-radius: 50px;
   color: white;
 }

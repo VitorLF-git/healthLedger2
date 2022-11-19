@@ -1,1 +1,50 @@
-<p>cadastrar works!</p>
+<mat-card class="example-card">
+    <mat-card-header class="center-content">
+        <mat-card-title>Cadastro</mat-card-title>
+        <mat-card-subtitle>{{tipo}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="profileForm">
+            <div class="center-content">
+                <mat-button-toggle-group formControlName="tipo" (change)="changeTipo($event)">
+                    <mat-button-toggle value="Laboratórios" id="1">Laboratórios</mat-button-toggle>
+                    <mat-button-toggle value="Medicamentos" id="2">Medicamentos</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <div class="center-content" *ngIf="id !== 0" >
+                <mat-form-field appearance="fill" class="limit-width">
+                    <mat-label>Nome</mat-label>
+                    <input matInput formControlName="nome">
+                </mat-form-field>
+            </div>
+            <div class="center-content" *ngIf="id === 1">
+                <mat-form-field appearance="fill" class="limit-width">
+                    <mat-label>Endereço</mat-label>
+                    <input matInput formControlName="endereco">
+                </mat-form-field>
+            </div>
+            <div class="center-content" *ngIf="id === 2">
+                <mat-form-field appearance="fill" class="limit-width">
+                    <mat-label>Quantidade</mat-label>
+                    <input matInput formControlName="quantidade">
+                </mat-form-field>
+            </div>
+            <div class="center-content" *ngIf="id === 2">
+                <mat-form-field appearance="fill" class="limit-width-2">
+                    <mat-label>Laboratório</mat-label>
+                    <mat-select>
+                      <mat-option *ngFor="let lab of laboratorios" [value]="lab.nome">{{lab.nome}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-mini-fab class="refresh" color="primary" [ngClass]="{'refresh-icon': true, 'rotating': rotating}" (click)="refresh()">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions class="center-content">
+        <div class="alternate-theme" *ngIf="id !== 0">
+            <button class="" mat-flat-button color="primary" (click)="onSubmit()">Cadastrar</button>
+        </div>
+    </mat-card-actions>
+</mat-card>

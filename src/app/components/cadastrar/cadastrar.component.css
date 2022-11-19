@@ -1,0 +1,22 @@
+.example-card {
+  height: 85%;
+  
+}
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+}
+
+.limit-width {
+  width: 25vw;
+}
+
+.limit-width-2 {
+  width: 20vw;
+}
+
+.refresh {
+  bottom: 10px;
+}

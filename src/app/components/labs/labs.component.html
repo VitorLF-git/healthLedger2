@@ -3,41 +3,43 @@
         <div class="col-md-12">
             <h3>Relação de hospitais e laboratórios</h3>
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-        
+
                 <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
-        
+
                 <ng-container matColumnDef="position">
                     <th mat-header-cell *matHeaderCellDef> No. </th>
                     <td mat-cell *matCellDef="let element"> {{element.position}} </td>
                 </ng-container>
-        
+
                 <ng-container matColumnDef="nome">
                     <th mat-header-cell *matHeaderCellDef> Nome </th>
                     <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
                 </ng-container>
-        
+
                 <ng-container matColumnDef="endereco">
                     <th mat-header-cell *matHeaderCellDef> Endereco </th>
                     <td mat-cell *matCellDef="let element"> {{element.endereco}} </td>
                 </ng-container>
-        
+
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef>
-                    <mat-icon class="header-icon">add</mat-icon>  
+                        <mat-icon class="header-icon" (click)="cadastrar = !cadastrar">add</mat-icon>
+                        <mat-icon [ngClass]="{'refresh-icon': true, 'rotating': rotating}" (click)="refresh()">refresh</mat-icon>
                     </th>
-                    <td mat-cell *matCellDef="let element"> 
+                    <td mat-cell *matCellDef="let element">
                         <mat-icon class="edit-icon">edit</mat-icon>
-                        <mat-icon class="delete-icon">delete</mat-icon> 
+                        <mat-icon class="delete-icon">delete</mat-icon>
                     </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
+            <app-cadastrar [id]="1" [tipo]="'Laboratórios'" *ngIf="cadastrar"></app-cadastrar>
         </div>
         <div class="col-md-1">
-            
+
         </div>
     </div>
 </div>

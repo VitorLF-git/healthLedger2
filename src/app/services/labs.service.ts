@@ -27,6 +27,10 @@ export class LabsService {
   deleteLab(id: string) {
     return this.commonService.delete('https://fiapexercicio3.herokuapp.com/laboratorios/' + id);
   }
+
+  getLocalLabs() {
+    return JSON.parse(localStorage.getItem('labs')!) || [];
+  }
   
 
 }
