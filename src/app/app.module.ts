@@ -13,6 +13,7 @@ import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
 import { EditarModalComponent } from './modal/editar-modal/editar-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ApagarModalComponent } from './modal/apagar-modal/apagar-modal.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -26,7 +27,6 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { ApagarModalComponent } from './modal/apagar-modal/apagar-modal.component';
 
 @NgModule({
   declarations: [
